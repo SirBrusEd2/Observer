@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+
+<VBox spacing="10" alignment="CENTER_RIGHT" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.example.task7.HelloController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Таймер -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Label text="Таймер"/>
+        <TextField fx:id="timerField" promptText="Время"/>
+        <Label text="Повтор"/>
+        <TextField fx:id="repeatField" promptText="Повтор"/>
+        <Button fx:id="startButton" text="Запустить" onAction="#start"/>
+        <Button fx:id="stopButton" text="Остановить" onAction="#stop"/>
+        <Button fx:id="resetButton" text="Сбросить" onAction="#reset"/>
+    </HBox>
+
+    <!-- Состояние таймера -->
+    <Label fx:id="statusLabel" text="Таймер неактивен" alignment="CENTER_RIGHT"/>
+
+    <!-- Прошло_с -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Label text="Прошло_с"/>
+        <TextField fx:id="textField" editable="false" prefWidth="200"/>
+        <Button fx:id="textStartButton" text="Запустить" onAction="#startText"/>
+        <Button fx:id="textStopButton" text="Остановить" onAction="#stopText"/>
+    </HBox>
+
+    <!-- Звонок -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Label text="Музыка"/>
+        <TextField fx:id="bellField" promptText="Укажите задержку музыки"/>
+        <Button fx:id="bellStartButton" text="Запустить" onAction="#startBell"/>
+        <Button fx:id="bellStopButton" text="Остановить" onAction="#stopBell"/>
+    </HBox>
+
+    <!-- Песочные часы -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Label text="Анимация"/>
+        <Button fx:id="clockStartButton" text="Запустить" onAction="#startClock"/>
+        <Button fx:id="clockStopButton" text="Остановить" onAction="#stopClock"/>
+    </HBox>
+
+    <!-- Canvas для анимации -->
+    <Canvas fx:id="canvas" width="200" height="200" />
+</VBox>
