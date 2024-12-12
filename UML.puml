@@ -1,0 +1,122 @@
+@startuml
+class com.example.task7.TimeServer {
+- Timer timer
+- TimerTask task
+- int timeState
+- List<Observer> observers
+- void tick()
++ int getState()
++ void setState(int)
++ void attach(Observer)
++ void detach(Observer)
++ void notifyAllObservers()
++ void start()
++ void stop()
++ void reset()
+}
+
+
+class com.example.task7.HelloApplication {
++ void start(Stage)
++ {static} void main(String[])
+}
+
+interface com.example.task7.Subject {
+~ void notifyAllObservers()
+~ void attach(Observer)
+~ void detach(Observer)
+~ int getState()
+}
+
+class com.example.task7.AnimationPlayer {
+- Subject subject
+- HelloController controller
+- int start
+- int interval
++ void startAnimationEvery(int)
++ void update(Subject)
+- void animateRectangle()
+}
+
+
+class com.example.task7.ComponentMusic {
+- int delay
+- MediaPlayer mediaPlayer
+- int lastPlayedTime
+- boolean isActive
++ void update(Subject)
++ void start(int)
++ void stop()
+}
+
+
+class com.example.task7.ComponentText {
+- TextField textField
+- boolean isActive
++ void update(Subject)
++ void start()
++ void stop()
+}
+
+
+class com.example.task7.HelloController {
+- TextField timerField
+- TextField repeatField
+- Button startButton
+- Button stopButton
+- Button resetButton
+- Label statusLabel
+- TextField textField
+- Button textStartButton
+- Button textStopButton
+- TextField bellField
+- Button bellStartButton
+- Button bellStopButton
+- Button clockStartButton
+- Button clockStopButton
+- Canvas canvas
+- TimeServer timeServer
+- ComponentText componentText
+- ComponentMusic componentMusic
+- ComponentAnimation componentAnimation
++ void initialize()
++ void start()
++ void stop()
++ void reset()
++ void startText()
++ void stopText()
++ void startBell()
++ void stopBell()
++ void startClock()
++ void stopClock()
++ Node getAnimationRectangle()
+}
+
+
+interface com.example.task7.Observer {
+~ void update(Subject)
+}
+
+class com.example.task7.ComponentAnimation {
+- GraphicsContext graphicsContext
+- int period
+- int lastAnimatedTime
+- boolean isActive
+- Timeline timeline
+- double progress
++ void update(Subject)
+- void animate()
++ void start(int)
++ void stop()
+}
+
+
+
+
+com.example.task7.Subject <|.. com.example.task7.TimeServer
+javafx.application.Application <|-- com.example.task7.HelloApplication
+com.example.task7.Observer <|.. com.example.task7.AnimationPlayer
+com.example.task7.Observer <|.. com.example.task7.ComponentMusic
+com.example.task7.Observer <|.. com.example.task7.ComponentText
+com.example.task7.Observer <|.. com.example.task7.ComponentAnimation
+@enduml
