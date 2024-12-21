@@ -70,8 +70,9 @@ public class ComponentAnimation implements Observer {
 
     public void stop() {
         if (timeline != null) {
-            timeline.stop();
+            timeline.stop(); // Останавливаем анимацию
         }
         isActive = false;
+        graphicsContext.clearRect(0, 0, graphicsContext.getCanvas().getWidth(), graphicsContext.getCanvas().getHeight()); // Очищаем холст
     }
 }

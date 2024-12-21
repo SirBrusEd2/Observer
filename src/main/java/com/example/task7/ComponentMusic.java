@@ -40,7 +40,9 @@ public class ComponentMusic implements Observer {
     }
 
     public void stop() {
-        mediaPlayer.stop();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop(); // Останавливаем воспроизведение музыки
+        }
         isActive = false;
     }
 }

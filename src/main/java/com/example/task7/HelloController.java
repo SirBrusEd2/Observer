@@ -9,10 +9,6 @@ import javafx.scene.control.TextField;
 
 public class HelloController {
     @FXML
-    private TextField timerField;
-    @FXML
-    private TextField repeatField;
-    @FXML
     private Button startButton;
     @FXML
     private Button stopButton;
@@ -38,6 +34,10 @@ public class HelloController {
     private Button clockStopButton;
     @FXML
     private Canvas canvas;
+    @FXML
+    private TextField delayField; // Добавляем поле для задержки
+    @FXML
+    private Button delayStartButton; // Добавляем кнопку для запуска с задержкой
 
     private TimeServer timeServer;
     private ComponentText componentText;
@@ -83,12 +83,16 @@ public class HelloController {
     @FXML
     public void stop() {
         timeServer.stop();
+        componentAnimation.stop(); // Останавливаем анимацию
+        componentMusic.stop(); // Останавливаем музыку
         statusLabel.setText("Таймер остановлен");
     }
 
     @FXML
     public void reset() {
         timeServer.reset();
+        componentAnimation.stop(); // Останавливаем анимацию
+        componentMusic.stop(); // Останавливаем музыку
         statusLabel.setText("Таймер сброшен");
     }
 
@@ -129,6 +133,17 @@ public class HelloController {
     @FXML
     public void stopClock() {
         componentAnimation.stop();
+    }
+
+    @FXML
+    public void startWithDelay() {
+        try {
+            int delay = Integer.parseInt(delayField.getText());
+            timeServer.startWithDelay(delay);
+            statusLabel.setText("Таймер запущен с задержкой " + delay + " секунд");
+        } catch (NumberFormatException e) {
+            statusLabel.setText("Ошибка: неверное значение для задержки");
+        }
     }
 
     public Node getAnimationRectangle() {

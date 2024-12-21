@@ -15,7 +15,6 @@ class com.example.task7.TimeServer {
 + void reset()
 }
 
-
 class com.example.task7.HelloApplication {
 + void start(Stage)
 + {static} void main(String[])
@@ -38,7 +37,6 @@ class com.example.task7.AnimationPlayer {
 - void animateRectangle()
 }
 
-
 class com.example.task7.ComponentMusic {
 - int delay
 - MediaPlayer mediaPlayer
@@ -49,7 +47,6 @@ class com.example.task7.ComponentMusic {
 + void stop()
 }
 
-
 class com.example.task7.ComponentText {
 - TextField textField
 - boolean isActive
@@ -57,7 +54,6 @@ class com.example.task7.ComponentText {
 + void start()
 + void stop()
 }
-
 
 class com.example.task7.HelloController {
 - TextField timerField
@@ -92,7 +88,6 @@ class com.example.task7.HelloController {
 + Node getAnimationRectangle()
 }
 
-
 interface com.example.task7.Observer {
 ~ void update(Subject)
 }
@@ -110,13 +105,17 @@ class com.example.task7.ComponentAnimation {
 + void stop()
 }
 
-
-
-
 com.example.task7.Subject <|.. com.example.task7.TimeServer
 javafx.application.Application <|-- com.example.task7.HelloApplication
 com.example.task7.Observer <|.. com.example.task7.AnimationPlayer
 com.example.task7.Observer <|.. com.example.task7.ComponentMusic
 com.example.task7.Observer <|.. com.example.task7.ComponentText
 com.example.task7.Observer <|.. com.example.task7.ComponentAnimation
+
+com.example.task7.HelloController --> com.example.task7.HelloApplication : uses
+com.example.task7.HelloController --> com.example.task7.TimeServer : uses
+com.example.task7.HelloController --> com.example.task7.ComponentText : uses
+com.example.task7.HelloController --> com.example.task7.ComponentMusic : uses
+com.example.task7.HelloController --> com.example.task7.ComponentAnimation : uses
+com.example.task7.AnimationPlayer --> com.example.task7.HelloController : uses
 @enduml

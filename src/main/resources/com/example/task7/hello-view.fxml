@@ -12,10 +12,6 @@
 
     <!-- Таймер -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
-        <Label text="Таймер"/>
-        <TextField fx:id="timerField" promptText="Время"/>
-        <Label text="Повтор"/>
-        <TextField fx:id="repeatField" promptText="Повтор"/>
         <Button fx:id="startButton" text="Запустить" onAction="#start"/>
         <Button fx:id="stopButton" text="Остановить" onAction="#stop"/>
         <Button fx:id="resetButton" text="Сбросить" onAction="#reset"/>
@@ -45,6 +41,13 @@
         <Label text="Анимация"/>
         <Button fx:id="clockStartButton" text="Запустить" onAction="#startClock"/>
         <Button fx:id="clockStopButton" text="Остановить" onAction="#stopClock"/>
+    </HBox>
+
+    <!-- Задержка перед запуском -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Label text="Задержка"/>
+        <TextField fx:id="delayField" promptText="Задержка (сек)"/>
+        <Button fx:id="delayStartButton" text="Запустить с задержкой" onAction="#startWithDelay"/>
     </HBox>
 
     <!-- Canvas для анимации -->
